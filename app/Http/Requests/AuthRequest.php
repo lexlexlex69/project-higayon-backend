@@ -27,5 +27,17 @@ class AuthRequest extends FormRequest
                 'password' => 'required|min:4',
             ];
         }
+        else if (request()->routeIs('user.signup')) {
+            return [
+                'username' => 'required|string|max:255|unique:App\Models\User,username',
+                'email' => 'required|string|email|unique:App\Models\User,email|max:255',
+                'password' => 'required|min:4|confirmed',
+            ];
+        }
+        else if (request()->routeIs('user.updatePhoto')) {
+            return [
+                'imagepath' => 'required|image|mimes:jpg,bmp,png|max:2048',
+            ];
+        }
     }
 }

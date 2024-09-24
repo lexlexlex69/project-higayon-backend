@@ -15,7 +15,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::post('/login', [AuthController::class, 'login'])->name('user.login');
+Route::post('/signup', [AuthController::class, 'signup'])->name('user.signup');
 
 Route::middleware(['auth:sanctum'])->group(function () {
+    Route::get('/currentUser', [AuthController::class, 'currentUser']);
+    Route::put('/updatePhoto', [AuthController::class, 'updatePhoto'])->name('user.updatePhoto');
     Route::post('/logout', [AuthController::class, 'logout']);
 });
