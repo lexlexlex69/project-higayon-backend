@@ -20,6 +20,10 @@ return new class extends Migration
             $table->string('imagepath')->nullable();
             $table->rememberToken();
             $table->timestamps();
+            
+            $table->integer('followers')->default(0);
+            $table->integer('following')->default(0);
+            $table->integer('posts')->default(0);
         });
     }
 

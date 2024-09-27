@@ -42,4 +42,32 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function followerUpdate(string $operation): self
+    {
+        if($operation == '1'){
+            $this->followers += 1;
+        } else {
+            $this->followers -= 1;
+        }
+        return $this;
+    }
+    public function followingUpdate(string $operation): self
+    {
+        if($operation == '1'){
+            $this->following += 1;
+        } else {
+            $this->following -= 1;
+        }
+        return $this;
+    }
+    public function postsUpdate(string $operation): self
+    {
+        if($operation == '1'){
+            $this->posts += 1;
+        } else {
+            $this->posts -= 1;
+        }
+        return $this;
+    }
 }

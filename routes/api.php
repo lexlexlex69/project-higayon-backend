@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\api\AuthController;
+use App\Http\Controllers\api\FollowController;
+use App\Http\Controllers\api\UsersFetchController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -21,4 +23,12 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/currentUser', [AuthController::class, 'currentUser']);
     Route::put('/updatePhoto', [AuthController::class, 'updatePhoto'])->name('user.updatePhoto');
     Route::post('/logout', [AuthController::class, 'logout']);
+
+    Route::get('/follow', [FollowController::class, 'index']);
+    Route::post('/follow', [FollowController::class, 'follow']);
+    Route::post('/unfollow', [FollowController::class, 'unfollow']);
+    
+    Route::get('/allUsers', [UsersFetchController::class, 'allUsers']);
+    Route::post('/suggestedUsers', [UsersFetchController::class, 'suggestedUsers']);
+    
 });
