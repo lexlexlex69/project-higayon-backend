@@ -31,5 +31,13 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/allUsers', [UsersFetchController::class, 'allUsers']);
     Route::get('/user/{id}', [UsersFetchController::class, 'User']);
     Route::get('/suggestedUsers', [UsersFetchController::class, 'suggestedUsers']);
+
+    //follow purposes
+    Route::get('/userFollowers/{id}', [UsersFetchController::class, 'userFollowers']);
+    Route::get('/userFollowed/{id}', [UsersFetchController::class, 'userFollowed']);
+    Route::get('/userSuggestions/{id}', [UsersFetchController::class, 'userSuggestions']);
+
+    //profile check
+    Route::get('/profileCheck/{id}', [UsersFetchController::class, 'profileCheck']);
     
 });
